@@ -1,0 +1,29 @@
+import React from 'react';
+import Chart from "@components/Chart/Chart"
+
+export default function ActivityChart(props) {
+
+    const chartDataPoints = [
+        { label: 'Jan', value: 0 },
+        { label: 'Feb', value: 0 },
+        { label: 'Mar', value: 0 },
+        { label: 'Apr', value: 0 },
+        { label: 'May', value: 0 },
+        { label: 'Jun', value: 0 },
+        { label: 'Jul', value: 0 },
+        { label: 'Aug', value: 0 },
+        { label: 'Sep', value: 0 },
+        { label: 'Oct', value: 0 },
+        { label: 'Nov', value: 0 },
+        { label: 'Dec', value: 0 },
+    ]
+    
+    for( const activity of props.activity ) {
+        const activityMonth = activity.date.getMonth();
+        chartDataPoints[activityMonth].value += activity.hours
+    }
+
+    return(
+        <Chart dataPoints={chartDataPoints}></Chart>
+    )
+}
